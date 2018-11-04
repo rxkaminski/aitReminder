@@ -1,12 +1,17 @@
-﻿<Window x:Class="aitReminder.Wpf.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aitReminder.Wpf"
+        xmlns:Views="clr-namespace:aitReminder.Wpf.Views" x:Class="aitReminder.Wpf.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AIT Reimnder" Height="450" Width="800">
+    <StackPanel>
+        <Views:MenuView x:Name="menuView" Margin="0,0,-0.4,0"/>
+        <Views:RemindersListView x:Name="remindersListView" Height="137" Margin="0,0,-0.4,0"/>
+
+
+
+    </StackPanel>
 </Window>

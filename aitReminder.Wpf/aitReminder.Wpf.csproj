@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\IMenuView.cs" />
+    <Compile Include="Views\IRemindersListView.cs" />
+    <Compile Include="Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RemindersListView.xaml.cs">
+      <DependentUpon>RemindersListView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +71,34 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BusinessLogic\aitReminderPresenter.cs" />
+    <Compile Include="BusinessLogic\IRemindersManager.cs" />
+    <Compile Include="BusinessLogic\OpenReminderService.cs" />
+    <Compile Include="BusinessLogic\RemindersManager.cs" />
+    <Compile Include="Commands\AddNewReminderMenuCommand.cs" />
+    <Compile Include="Commands\CloseMenuCommand.cs" />
+    <Compile Include="Commands\EditMenuCommand.cs" />
+    <Compile Include="Commands\EditReminderMenuCommand.cs" />
+    <Compile Include="Commands\FileMenuCommmand.cs" />
+    <Compile Include="Commands\IMenuCommand.cs" />
+    <Compile Include="Commands\MenuCommand.cs" />
+    <Compile Include="Commands\OpenMenuCommand.cs" />
+    <Compile Include="Commands\SaveMenuCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RemindersListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Reminder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
