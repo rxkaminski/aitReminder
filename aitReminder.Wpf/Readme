@@ -1,0 +1,3 @@
+﻿Name: aitReminder
+Description: Application for defining events. After defined time will be show notification.
+Use: .NET, C#, WPF, MVP, EventAggregator, Commands 

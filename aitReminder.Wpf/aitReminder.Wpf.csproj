@@ -86,6 +86,7 @@
     <Compile Include="Commands\RemoveReminderMenuCommand.cs" />
     <Compile Include="Commands\SaveAsMenuCommand.cs" />
     <Compile Include="Models\IReminder.cs" />
+    <None Include="Readme" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
