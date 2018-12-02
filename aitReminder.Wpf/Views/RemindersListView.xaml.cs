@@ -1,6 +1,6 @@
-﻿using aitReminder.Wpf.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using aitReminder.Wpf.BusinessLogic;
+using aitReminder.Wpf.Models;
 
 namespace aitReminder.Wpf.Views
 {
@@ -26,9 +28,32 @@ namespace aitReminder.Wpf.Views
             InitializeComponent();
         }
 
+        public event EventHandler<ReminderEventArgs> SelectionChanged;
+
+        public virtual void OnSelectionChanged(Reminder reminder)
+        {
+            SelectionChanged?.Invoke(this, new ReminderEventArgs(reminder));
+        }
+
+        public Reminder Selected()
+        {
+            return (Reminder)reminderDataGrid.SelectedItem;
+        }
+
+
         public void SetReminders(IEnumerable<Reminder> reminders)
         {
-            remindersListView.ItemsSource = reminders;
+            reminderDataGrid.ItemsSource = reminders;
+        }
+
+        private void reminderDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Reminder reminder = null;
+               
+            if(e.AddedItems.Count > 0)
+                reminder = e.AddedItems[0] as Reminder;
+
+            OnSelectionChanged(reminder);
         }
     }
 }

@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace aitReminder.Wpf.Commands
 {
     class CloseMenuCommand : MenuCommand
     {
-        public CloseMenuCommand() : this(null) { }
+        private readonly IMainWindow _mainWindow;
 
-        public CloseMenuCommand(IEnumerable<IMenuCommand> subCommands) : base(subCommands)
+        public CloseMenuCommand(IMainWindow mainWindow) : this(mainWindow, null) { }
+
+        public CloseMenuCommand(IMainWindow mainWindow, IEnumerable<IMenuCommand> subCommands) : base(subCommands)
         {
+            _mainWindow = mainWindow;
+
             Header = "Close";
         }
-        
+
         public override void Execute()
         {
-            throw new NotImplementedException();
+            _mainWindow.CloseApplication();
         }
     }
 }

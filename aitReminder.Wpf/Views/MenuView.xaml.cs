@@ -43,6 +43,7 @@ namespace aitReminder.Wpf.Views
             var item = new MenuItem();
             item.Header = menuCommand.Header;
             item.Icon = menuCommand.Icon;
+            item.IsEnabled = menuCommand.IsEnabled;
             
 
             menuCommand.PropertyChanged += (s, o) => {

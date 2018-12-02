@@ -1,0 +1,158 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aitReminder.Wpf.Views"
+        xmlns:Models="clr-namespace:aitReminder.Wpf.Models"
+        x:Class="aitReminder.Wpf.Views.AddEditReminderForm"
+        mc:Ignorable="d"
+        Title="AddEditReminderForm2"
+        Height="250"
+        Width="300"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <CollectionViewSource x:Key="reminderViewSource"
+                              d:DesignSource="{d:DesignInstance {x:Type Models:Reminder}, CreateList=True}" />
+    </Window.Resources>
+    <StackPanel>
+        <Grid x:Name="grid1"
+              DataContext="{StaticResource reminderViewSource}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Content="Name:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="nameTextBox"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="2.6,5,-53.4,4.8"
+                     Grid.Row="0"
+                     Text="{Binding Name, 
+                            Mode=TwoWay, 
+                            NotifyOnValidationError=True, 
+                            ValidatesOnDataErrors=True,
+                            UpdateSourceTrigger=Explicit}"
+                     ToolTip="{Binding ErrorCollection[Name]}"
+                     VerticalAlignment="Center"
+                     Width="178" />
+
+            <Label Content="Description:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="1"
+                   VerticalAlignment="Center" />
+
+            <TextBox x:Name="descriptionTextBox"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="23"
+                     Margin="2.6,5.2,-53.4,4.6"
+                     Grid.Row="1"
+                     Text="{Binding Description, 
+                            Mode=TwoWay, 
+                            NotifyOnValidationError=True, 
+                            ValidatesOnDataErrors=True,
+                            UpdateSourceTrigger=Explicit}"
+                     ToolTip="{Binding ErrorCollection[Description]}"
+                     VerticalAlignment="Center"
+                     Width="178" />
+
+            <Label Content="Start Date:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="2"
+                   VerticalAlignment="Center" />
+
+            <TextBox x:Name="startDateTextBox"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="24"
+                     Margin="2.6,4.8,-5.6,4.8"
+                     Grid.Row="2"
+                     Text="{Binding StartDate,
+                            Mode=TwoWay, 
+                            NotifyOnValidationError=True, 
+                            ValidatesOnDataErrors=True,
+                            UpdateSourceTrigger=Explicit}"
+                     ToolTip="{Binding ErrorCollection[StartDate]}"
+                     VerticalAlignment="Center"
+                     Width="131" />
+
+            <Label Content="Repeated:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="3"
+                   VerticalAlignment="Center" />
+
+            <CheckBox x:Name="repeatedCheckBox"
+                      Content=""
+                      Grid.Column="1"
+                      HorizontalAlignment="Left"
+                      IsChecked="{Binding Repeated,
+                                    Mode=TwoWay, 
+                                    NotifyOnValidationError=True, 
+                                    UpdateSourceTrigger=Explicit}"
+                      Margin="3"
+                      Grid.Row="3"
+                      VerticalAlignment="Center" />
+
+            <Label Content="Repeat Interval:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="4"
+                   VerticalAlignment="Center" />
+
+            <TextBox x:Name="repeatIntervalTextBox"
+                     Grid.Column="1"
+                     Height="23"
+                     Margin="2.6,5.6,70.2,7.4"
+                     Grid.Row="4"
+                     Text="{Binding RepeatInterval,
+                            Mode=TwoWay, 
+                            NotifyOnValidationError=True, 
+                            ValidatesOnDataErrors=True,
+                            UpdateSourceTrigger=Explicit}"
+                     ToolTip="{Binding ErrorCollection[RepeatInterval]}"
+                     VerticalAlignment="Center" />
+
+
+        </Grid>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="btnOk"
+                    Content="Ok"
+                    Width="60"
+                    Margin="5"
+                    Click="btnOk_Click" />
+            <Button x:Name="btnCancel"
+                    Content="Cancel"
+                    Width="60"
+                    Margin="5"
+                    Click="btnCancel_Click" />
+        </StackPanel>
+
+
+    </StackPanel>
+</Window>
